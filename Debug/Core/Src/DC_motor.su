@@ -1,0 +1,4 @@
+../Core/Src/DC_motor.cpp:15:6:void DC_motor::PI_run()	40	static
+../Core/Src/DC_motor.cpp:55:6:void DC_motor::setspeed(float)	16	static
+../Core/Src/DC_motor.cpp:58:6:void DC_motor::update_speed(int)	24	static
+../Core/Src/DC_motor.cpp:64:6:void DC_motor::setup()	16	static
