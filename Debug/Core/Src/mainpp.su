@@ -1,5 +1,6 @@
-../Core/Inc/DC_motor.h:23:2:DC_motor::DC_motor(TIM_HandleTypeDef*, GPIO_TypeDef*, uint16_t, TIM_HandleTypeDef*, uint32_t)	24	static
-../Core/Src/mainpp.cpp:24:6:void main_function()	8	static
-../Core/Src/mainpp.cpp:40:6:void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef*)	16	static
-../Core/Src/mainpp.cpp:46:1:void __static_initialization_and_destruction_0(int, int)	24	static
-../Core/Src/mainpp.cpp:46:1:cpp)	8	static
+../Core/Inc/servo.h:19:5:servo::servo(TIM_HandleTypeDef*, uint32_t)	24	static
+../Core/Inc/DC_motor.h:22:2:DC_motor::DC_motor(TIM_HandleTypeDef*, GPIO_TypeDef*, uint16_t, TIM_HandleTypeDef*, uint32_t)	24	static
+../Core/Src/mainpp.cpp:36:6:void setup_all()	8	static
+../Core/Src/mainpp.cpp:39:6:void main_function()	8	static
+../Core/Src/mainpp.cpp:50:1:void __static_initialization_and_destruction_0(int, int)	24	static
+../Core/Src/mainpp.cpp:50:1:cpp)	8	static

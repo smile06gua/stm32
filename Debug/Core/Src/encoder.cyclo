@@ -1,5 +1,2 @@
-../Core/Inc/DC_motor.h:23:2:DC_motor::DC_motor(TIM_HandleTypeDef*, GPIO_TypeDef*, uint16_t, TIM_HandleTypeDef*, uint32_t)	1
-../Core/Src/encoder.cpp:25:6:void setup()	1
-../Core/Src/encoder.cpp:33:6:void run_dir()	1
-../Core/Src/encoder.cpp:49:1:void __static_initialization_and_destruction_0(int, int)	3
-../Core/Src/encoder.cpp:49:1:cpp)	1
+../Core/Src/encoder.cpp:13:6:void encoder::init()	1
+../Core/Src/encoder.cpp:16:6:void encoder::update_speed(int)	1

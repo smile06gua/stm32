@@ -10,10 +10,10 @@
 #include "stm32g4xx_hal.h"
 
 
-void Encoder::init(){
+void encoder::init(){
 	HAL_TIM_Encoder_Start(enc_htim, TIM_CHANNEL_ALL);
 }
-void Encoder::update_speed(int sign){
+void encoder::update_speed(int sign){
 	int16_t enc ;
 	enc = __HAL_TIM_GetCounter(enc_htim);
 	speed = sign*(float)enc /(4*resolution*span);

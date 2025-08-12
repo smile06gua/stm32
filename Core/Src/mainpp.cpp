@@ -10,19 +10,45 @@
 #include "control.h"
 #include "servo.h"
 #include "DC_motor.h"
+#include "timer.h"
 #include <cmath>
 
+extern TIM_HandleTypeDef htim1;
+extern TIM_HandleTypeDef htim2;
 extern TIM_HandleTypeDef htim3;
 extern TIM_HandleTypeDef htim4;
 extern TIM_HandleTypeDef htim6;
 extern TIM_HandleTypeDef htim8;
 
-DC_motor Motor1(&htim3,GPIOA,GPIO_PIN_9,&htim8,TIM_CHANNEL_1);
+DC_motor Motor_forword = {&htim3, GPIOA, GPIO_PIN_9, &htim8, TIM_CHANNEL_1};
+DC_motor Motor_updown = {&htim4, GPIOA, GPIO_PIN_10, &htim8, TIM_CHANNEL_2};
+
+
+servo servo_gripper = {&htim1, TIM_CHANNEL_3};
+servo servo_trun = {&htim1, TIM_CHANNEL_2};
+
 
 float speeds = 0;
 float range = 1;
 float add = 0.01;
+float angle = 30;
 
+void setup_all(){
+	servo_gripper.setup();
+}
+void main_function(){
+	setup_all();
+
+	while(1){
+		servo_gripper.update_pos(angle, 1);
+		servo_gripper.run();
+		wait(3000, &htim2);
+		servo_gripper.update_pos(300, 1);
+		servo_gripper.run();
+		wait(3000, &htim2);
+	}
+}
+/*
 void main_function(){
 	Motor1.setup();
 	HAL_TIM_Base_Start_IT(&htim6);
@@ -46,3 +72,4 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 		ms++;
 	}
 }
+*/

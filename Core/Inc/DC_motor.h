@@ -19,7 +19,6 @@ public:
 	float get_speed() const { return speed; }
 	void setspeed(float target_speed);
 
-
 	DC_motor(TIM_HandleTypeDef *_enc_htim, GPIO_TypeDef *_dirPort, uint16_t _dirPin, TIM_HandleTypeDef *_PWM_htim, uint32_t _PWM_TIM_CHANNEL) {
 		enc_htim = _enc_htim;
 		dirPort = _dirPort;

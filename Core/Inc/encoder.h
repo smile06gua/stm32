@@ -10,9 +10,9 @@
 
 #include "stm32g4xx_hal.h"
 
-class Encoder{
+class encoder{
 public:
-	void update_speed();
+	void update_speed(int);
 	void init();
 private:
 	int resolution;

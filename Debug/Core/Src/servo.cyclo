@@ -1,2 +1,3 @@
-../Core/Src/servo.cpp:16:6:void servo_setup()	1
-../Core/Src/servo.cpp:21:6:void servo_move()	3
+../Core/Src/servo.cpp:14:6:void servo::setup()	1
+../Core/Src/servo.cpp:17:6:void servo::update_pos(float, int)	1
+../Core/Src/servo.cpp:23:6:void servo::run()	11

@@ -1,4 +1,4 @@
-Core/Src/mainpp.o: ../Core/Src/mainpp.cpp ../Core/Inc/encoder.h \
+Core/Src/timer.o: ../Core/Src/timer.cpp ../Core/Inc/timer.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h \
  ../Core/Inc/stm32g4xx_hal_conf.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_rcc.h \
@@ -27,10 +27,8 @@ Core/Src/mainpp.o: ../Core/Src/mainpp.cpp ../Core/Inc/encoder.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_pwr.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_pwr_ex.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim.h \
- ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim_ex.h \
- ../Core/Inc/mainpp.h ../Core/Inc/control.h ../Core/Inc/servo.h \
- ../Core/Inc/DC_motor.h ../Core/Inc/timer.h
-../Core/Inc/encoder.h:
+ ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim_ex.h
+../Core/Inc/timer.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h:
 ../Core/Inc/stm32g4xx_hal_conf.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_rcc.h:
@@ -60,8 +58,3 @@ Core/Src/mainpp.o: ../Core/Src/mainpp.cpp ../Core/Inc/encoder.h \
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_pwr_ex.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim_ex.h:
-../Core/Inc/mainpp.h:
-../Core/Inc/control.h:
-../Core/Inc/servo.h:
-../Core/Inc/DC_motor.h:
-../Core/Inc/timer.h:
