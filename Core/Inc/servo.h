@@ -31,7 +31,7 @@ private:
     int minPulse = 500;
     int responseTime = 0;
     bool move = 0;
-    int updateFreqency = 0;
+    int updateFreqency = 1000;
     TIM_HandleTypeDef *servo_htim;
     uint32_t servo_TIM_CHANNEL;
 };

@@ -8,8 +8,15 @@
 
 #include "encoder.h"
 #include "stm32g4xx_hal.h"
-
-
+/*
+float wheel_dia_mm = 5.0f; // 轮径，单位mm
+float wheel_circumference_mm = wheel_dia_mm * 3.14159265358979323846f; // 轮周长
+//float wheel_circumference_m = wheel_circumference_mm / 1000.0f; // 轮周长，单位m 
+int ppr = 100; // 每圈脉冲数
+int gear_ratio = 64; // 齿轮减速比
+float meters_per_tick = wheel_circumference_mm / (ppr * gear_ratio * 1000.0f); // 每个脉冲对应的距离，单位m
+float wheel_speed_mps = 0.0f; // 轮速，单位m/s	
+*/
 void encoder::init(){
 	HAL_TIM_Encoder_Start(enc_htim, TIM_CHANNEL_ALL);
 }
@@ -22,9 +29,6 @@ void encoder::update_speed(int sign){
 /*
 int16_t enc;
 float speed;
-extern TIM_HandleTypeDef htim2;
-extern TIM_HandleTypeDef htim4;
-extern TIM_HandleTypeDef htim8;
 float resolution = 256;       // 例如：每圈脈波數
 float reduction_ratio = 1.0;     // 例如：減速比
 float span = 0.001;

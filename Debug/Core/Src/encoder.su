@@ -1,2 +1,2 @@
-../Core/Src/encoder.cpp:13:6:void encoder::init()	16	static
-../Core/Src/encoder.cpp:16:6:void encoder::update_speed(int)	24	static
+../Core/Src/encoder.cpp:20:6:void encoder::init()	16	static
+../Core/Src/encoder.cpp:23:6:void encoder::update_speed(int)	24	static

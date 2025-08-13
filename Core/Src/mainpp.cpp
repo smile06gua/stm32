@@ -32,20 +32,52 @@ float speeds = 0;
 float range = 1;
 float add = 0.01;
 float angle = 30;
-
+float high= 0.0;
+int gripperHighest = 0;
+int gripperLowest = 0;
 void setup_all(){
 	servo_gripper.setup();
+	Motor_forword.setup();
+	Motor_updown.setup();
 }
 void main_function(){
 	setup_all();
 
 	while(1){
+		/*motor_updown
+		*/
+		if(gripperHighest == 0){
+			motor_updown.setspeed(speeds);
+			motor_updown.PI_run();
+		}
+
+
+		/*servo_gripper
 		servo_gripper.update_pos(angle, 1);
 		servo_gripper.run();
 		wait(3000, &htim2);
 		servo_gripper.update_pos(300, 1);
 		servo_gripper.run();
 		wait(3000, &htim2);
+		*/
+	}
+}
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
+	switch(GPIO_Pin){
+		case GPIO_PIN_13:
+			gripperHighest = 1;
+			gripperLowest = 0;
+			high = 100;
+			Motor_updown.setspeed(0);
+			break;
+		case GPIO_PIN_12:
+			gripperLowest = 1;
+			gripperHighest = 0;
+			high = 0;
+			Motor_updown.setspeed(0);
+			break;
+
 	}
 }
 /*
