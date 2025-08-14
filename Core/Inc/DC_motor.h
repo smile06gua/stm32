@@ -19,12 +19,26 @@ public:
 	float get_speed() const { return speed; }
 	void setspeed(float target_speed);
 
+    // 設定高度校正值（輸入總高度差和對應的encoder數）
+    void calibrate_height(float total_height_mm, int32_t total_steps);
+
+    // 取得目前高度（mm）
+    float get_current_height() const;
+    
+    // 記錄起始位置的encoder count
+    void mark_start_position();
+    
+    // 取得從起始位置走了多少步
+    int32_t get_steps_from_start() const;
+
 	DC_motor(TIM_HandleTypeDef *_enc_htim, GPIO_TypeDef *_dirPort, uint16_t _dirPin, TIM_HandleTypeDef *_PWM_htim, uint32_t _PWM_TIM_CHANNEL) {
 		enc_htim = _enc_htim;
 		dirPort = _dirPort;
 		dirPin = _dirPin;
 		PWM_htim = _PWM_htim;
 		PWM_TIM_CHANNEL = _PWM_TIM_CHANNEL;
+		total_encoder_count = 0;
+        mm_per_step = 0;  // 初始化每步對應的高度
 	};
 private:
 	//PID parameter
@@ -36,8 +50,8 @@ private:
 	float sp = 0.f;
 	//motor and encoder information
 	float span = 0.001;
-	int resolution = 256;
-	float reduction_ratio = 24;
+	int resolution = 100;
+	float reduction_ratio = 64;
 	int dir = 0;
 	int arr = 999;
 	int pulse = 0;
@@ -47,7 +61,9 @@ private:
 	uint16_t dirPin;
 	TIM_HandleTypeDef *PWM_htim;
 	uint32_t PWM_TIM_CHANNEL;
-
+	int32_t total_encoder_count = 0;
+    float mm_per_step = 0;  // 每個encoder步數對應的高度(mm)
+    int32_t start_position = 0;  // 記錄起始位置的encoder count
 };
 
 

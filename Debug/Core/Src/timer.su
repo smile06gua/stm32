@@ -1,2 +1,0 @@
-../Core/Src/timer.cpp:12:6:void wait(int, TIM_HandleTypeDef*)	16	static
-../Core/Src/timer.cpp:22:6:void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef*)	16	static
