@@ -27,26 +27,40 @@ extern TIM_HandleTypeDef htim8;
 DC_motor Motor_forword = {&htim3, GPIOA, GPIO_PIN_9, &htim8, TIM_CHANNEL_1};
 DC_motor Motor_updown = {&htim4, GPIOA, GPIO_PIN_10, &htim8, TIM_CHANNEL_2};
 
-servo servo_gripper = {&htim1, TIM_CHANNEL_3};
-servo servo_trun = {&htim1, TIM_CHANNEL_2};
+servo servo_trun = {&htim1, TIM_CHANNEL_1};
+servo servo_gripper = {&htim1, TIM_CHANNEL_2};
+servo servo_left = {&htim1,TIM_CHANNEL_3};
+servo servo_right = {&htim1,TIM_CHANNEL_4};
+
 static bool initialized = true;
 float speeds = 0;
 float range = 1;
 float add = 0.01;
-float angle = 30;
+float angle = 150;
+float angle_2 = 150;
 float high= 0.0;
 //int angle = 0
 int delay_count = 0;
 int gripperHighest = 0;
 int gripperLowest = 0;
 static int32_t total_steps = 0;  // 用來記錄總步數
+
 void wait(int ,TIM_HandleTypeDef*);
+void mission_1();
+void mission_2();
 void mission_3();
+void mission_4();
 
 void setup_all(){
 	servo_gripper.setup();
+	servo_right.setup();
+	servo_left.setup();
 	Motor_forword.setup();
 	Motor_updown.setup();
+	servo_right.update_pos(angle, 1);
+	servo_right.run();
+	servo_left.update_pos(100, 1);
+	servo_left.run();
 }
 void main_function(){
 	setup_all();
@@ -76,6 +90,19 @@ void mission_2(){
 
 }
 void mission_3(){
+
+	//竹簍
+	//servo_right.update_pos(angle_2, 5);
+	//servo_right.run();
+	servo_left.update_pos(angle_2, 1);
+	servo_left.run();
+
+	//servo_right.update_pos(angle, 5);
+	//servo_right.run();
+	servo_left.update_pos(angle, 1);
+	servo_left.run();
+
+	
     
     // 第一次執行時初始化
     if (!initialized) {

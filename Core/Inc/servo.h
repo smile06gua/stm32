@@ -13,7 +13,7 @@
 class servo{
 public:
     void setup();
-    void update_pos(float goalpos,int responseTime);
+        void update_pos(float goalpos, int responseTime);
     void run();
 
     servo(TIM_HandleTypeDef *_servo_htim, uint32_t _servo_TIM_CHANNEL){

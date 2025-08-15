@@ -8,7 +8,7 @@
 #include "servo.h"
 #include "stm32g4xx_hal.h"
 int pulse = 0;
-float pos = 0;
+int pos = 0;
 float distance = 0;
 
 void servo::setup(){
@@ -20,8 +20,10 @@ void servo::update_pos(float _goalPos,int _responseTime){
     move = true;
     //run();
 }
+
 void servo::run(){//updateFreq = timer interrupt frequency Hz
-	if (move == true){
+	//可控夾爪，其他超怪
+    if (move == true){
 		if (((currentPos >= goalPos && goalPos >= lastPos) || (currentPos <= goalPos && goalPos<=lastPos))){
     	 move = false;
     	 lastPos =  goalPos;
@@ -37,4 +39,16 @@ void servo::run(){//updateFreq = timer interrupt frequency Hz
         }
 
 	}
+    /*
+   for(pos = 0; pos <= goalPos; pos++){
+    __HAL_TIM_SET_COMPARE(servo_htim, servo_TIM_CHANNEL, minPulse + pos / maxAngle * (maxPulse - minPulse));
+    HAL_Delay(100);
+   }
+
+   for(pos = goalPos; pos > 0; pos--){
+    __HAL_TIM_SET_COMPARE(servo_htim, servo_TIM_CHANNEL, minPulse + pos / maxAngle * (maxPulse - minPulse));
+    HAL_Delay(100);
+   }
+   */
+
 }
