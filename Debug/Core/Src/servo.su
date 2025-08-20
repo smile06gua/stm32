@@ -1,3 +1,7 @@
-../Core/Src/servo.cpp:14:6:void servo::setup()	16	static
-../Core/Src/servo.cpp:17:6:void servo::update_pos(float, int)	24	static
-../Core/Src/servo.cpp:24:6:void servo::run()	16	static
+../Core/Src/servo.cpp:11:6:void Servo::setup(int)	16	static
+../Core/Src/servo.cpp:16:6:void Servo::attach(uint32_t)	16	static
+../Core/Src/servo.cpp:20:6:void Servo::setTimer(TIM_HandleTypeDef*)	16	static
+../Core/Src/servo.cpp:24:6:void Servo::setMaxAngle(int)	16	static
+../Core/Src/servo.cpp:28:6:void Servo::setPulseRange(int, int)	24	static
+../Core/Src/servo.cpp:33:6:void Servo::write(int)	24	static
+../Core/Src/servo.cpp:48:6:void Servo::detach()	16	static

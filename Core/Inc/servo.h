@@ -10,8 +10,6 @@
 
 #include "stm32G4xx_hal.h"
 
-namespace Jason{
-
 //int p = 0;
 class Servo {
 	private:
@@ -24,9 +22,12 @@ class Servo {
 
 
 	public:
-		Servo(TIM_HandleTypeDef* h, uint32_t ch) {
+		Servo(TIM_HandleTypeDef* h, uint32_t ch,int MaxAngle = 300,int MinPulse = 500,int MaxPulse = 2500) {
 			htim = h;
 			channel = ch;
+			maxAng = MaxAngle;
+			minPulse = MinPulse;
+			maxPulse = MaxPulse;
 		}
 		void setup(int startAngle = 0);
 		void attach(uint32_t ch);
@@ -37,5 +38,4 @@ class Servo {
 		void detach();
 };
 
-}
 #endif /* INC_SERVO_H_ */

@@ -3,7 +3,7 @@
 ../Core/Src/main.c:168:13:MX_I2C1_Init	4
 ../Core/Src/main.c:216:13:MX_TIM1_Init	8
 ../Core/Src/main.c:300:13:MX_TIM2_Init	4
-../Core/Src/main.c:345:13:MX_TIM3_Init	3
+../Core/Src/main.c:345:13:MX_TIM3_Init	4
 ../Core/Src/main.c:394:13:MX_TIM4_Init	3
 ../Core/Src/main.c:443:13:MX_TIM8_Init	6
 ../Core/Src/main.c:519:13:MX_GPIO_Init	1
