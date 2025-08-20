@@ -21,11 +21,11 @@
 //DC_motor Motor_forword = {&htim3, GPIOA, GPIO_PIN_9, &htim8, TIM_CHANNEL_1};
 DC_motor Motor_updown = {&htim4, GPIOA, GPIO_PIN_10, &htim8, TIM_CHANNEL_2};
 
-Servo servo_turn = {&htim3, TIM_CHANNEL_1};
+Servo servo_turn = {&htim3, TIM_CHANNEL_1, 1800};
 Servo servo_gripper = {&htim1, TIM_CHANNEL_2};
 Servo servo_left = {&htim1, TIM_CHANNEL_3};
 Servo servo_right = {&htim1, TIM_CHANNEL_4};
-Servo servo_forward = {&htim1, TIM_CHANNEL_1};
+Servo servo_forward = {&htim1, TIM_CHANNEL_1, 1800};
 
 bool initialized = true;
 float speeds = 0;
@@ -41,11 +41,9 @@ int32_t total_steps = 0;  // 用來記錄總步數
 
 
 void setup_all(){
-	servo_gripper.setMaxAngle(300);
 	servo_gripper.setup(0);
 	servo_right.setup(0);
 	servo_left.setup(0);
-	servo_forward.setMaxAngle(1800);
 	servo_forward.setup(90);
 	servo_turn.setup(0);
 	Motor_updown.setup();
