@@ -8,31 +8,34 @@
 #ifndef INC_SERVO_H_
 #define INC_SERVO_H_
 
-#include "stm32g4xx_hal.h"
+#include "stm32G4xx_hal.h"
 
-class servo{
-public:
-    void setup();
-        void update_pos(float goalpos, int responseTime);
-    void run();
+namespace Jason{
 
-    servo(TIM_HandleTypeDef *_servo_htim, uint32_t _servo_TIM_CHANNEL){
-    	servo_htim = _servo_htim;
-    	servo_TIM_CHANNEL = _servo_TIM_CHANNEL;
-    	updateFreqency = 1000;
-    };
+//int p = 0;
+class Servo {
+	private:
+		uint32_t channel;
+		int angle;
+		TIM_HandleTypeDef* htim;
+		int maxAng = 300;
+		int maxPulse = 2500;
+		int minPulse = 500;
 
-private:
-    float currentPos = 0;
-    float goalPos = 0;
-    float lastPos = 0;
-    float maxAngle = 300;
-    int maxPulse = 2500;
-    int minPulse = 500;
-    int responseTime = 0;
-    bool move = 0;
-    int updateFreqency = 1000;
-    TIM_HandleTypeDef *servo_htim;
-    uint32_t servo_TIM_CHANNEL;
+
+	public:
+		Servo(TIM_HandleTypeDef* h, uint32_t ch) {
+			htim = h;
+			channel = ch;
+		}
+		void setup(int startAngle = 0);
+		void attach(uint32_t ch);
+		void setTimer(TIM_HandleTypeDef* h);
+		void setMaxAngle(int ang);
+		void setPulseRange(int min,int max);
+		void write(int ang);
+		void detach();
 };
+
+}
 #endif /* INC_SERVO_H_ */

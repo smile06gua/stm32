@@ -17,6 +17,8 @@
 #include <cstdint>
 #include <cstdlib>
 
+using namespace Jason;
+
 extern TIM_HandleTypeDef htim1;
 extern TIM_HandleTypeDef htim2;
 extern TIM_HandleTypeDef htim3;
@@ -24,13 +26,14 @@ extern TIM_HandleTypeDef htim4;
 extern TIM_HandleTypeDef htim6;
 extern TIM_HandleTypeDef htim8;
 
-DC_motor Motor_forword = {&htim3, GPIOA, GPIO_PIN_9, &htim8, TIM_CHANNEL_1};
+//DC_motor Motor_forword = {&htim3, GPIOA, GPIO_PIN_9, &htim8, TIM_CHANNEL_1};
 DC_motor Motor_updown = {&htim4, GPIOA, GPIO_PIN_10, &htim8, TIM_CHANNEL_2};
 
-servo servo_trun = {&htim1, TIM_CHANNEL_1};
-servo servo_gripper = {&htim1, TIM_CHANNEL_2};
-servo servo_left = {&htim1,TIM_CHANNEL_3};
-servo servo_right = {&htim1,TIM_CHANNEL_4};
+Servo servo_turn = {&htim1, TIM_CHANNEL_1};
+Servo servo_gripper = {&htim1, TIM_CHANNEL_2};
+Servo servo_left = {&htim1, TIM_CHANNEL_3};
+Servo servo_right = {&htim1, TIM_CHANNEL_4};
+Servo servo_forward = {&htim3, TIM_CHANNEL_1};
 
 static bool initialized = true;
 float speeds = 0;
@@ -39,7 +42,6 @@ float add = 0.01;
 float angle = 150;
 float angle_2 = 150;
 float high= 0.0;
-//int angle = 0
 int delay_count = 0;
 int gripperHighest = 0;
 int gripperLowest = 0;
@@ -52,15 +54,12 @@ void mission_3();
 void mission_4();
 
 void setup_all(){
-	servo_gripper.setup();
-	servo_right.setup();
-	servo_left.setup();
-	Motor_forword.setup();
+	servo_gripper.setup(0);
+	servo_right.setup(0);
+	servo_left.setup(0);
+	servo_forward.setup(0);
+	servo_turn.setup(0);
 	Motor_updown.setup();
-	servo_right.update_pos(angle, 1);
-	servo_right.run();
-	servo_left.update_pos(100, 1);
-	servo_left.run();
 }
 void main_function(){
 	setup_all();
