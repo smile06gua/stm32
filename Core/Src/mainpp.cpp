@@ -17,9 +17,9 @@
 #include <cstdint>
 #include <cstdlib>
 
-
+extern TIM_HandleTypeDef htim6;
 //DC_motor Motor_forword = {&htim3, GPIOA, GPIO_PIN_9, &htim8, TIM_CHANNEL_1};
-DC_motor Motor_updown = {&htim4, GPIOA, GPIO_PIN_10, &htim8, TIM_CHANNEL_2};
+DC_motor Motor_updown = {&htim4, GPIOA, GPIO_PIN_9, &htim8, TIM_CHANNEL_1,0,4,12};
 
 Servo servo_turn = {&htim3, TIM_CHANNEL_1, 1800};
 Servo servo_gripper = {&htim1, TIM_CHANNEL_2};
@@ -27,16 +27,22 @@ Servo servo_left = {&htim1, TIM_CHANNEL_3};
 Servo servo_right = {&htim1, TIM_CHANNEL_4};
 Servo servo_forward = {&htim1, TIM_CHANNEL_1, 1800};
 
+//通訊
+bool girpperIsGet = 0;
+
+
+
 bool initialized = true;
 float speeds = 0;
 float range = 1;
 float add = 0.01;
 float angle = 150;
 float angle_2 = 150;
-float high= 0.0;
+float high= 0.0f;
 int delay_count = 0;
 int gripperHighest = 0;
 int gripperLowest = 0;
+int ms = 0;
 int32_t total_steps = 0;  // 用來記錄總步數
 
 
@@ -47,12 +53,14 @@ void setup_all(){
 	servo_forward.setup(90);
 	servo_turn.setup(0);
 	Motor_updown.setup();
+	HAL_TIM_Base_Start_IT(&htim6);
+	ms++;
 }
 void main_function(){
 	setup_all();
 
 	while(1){
-		mission_2();
+		//mission_3();
 		//mission_2();
 
 
@@ -75,7 +83,12 @@ void wait(int time,TIM_HandleTypeDef *htim){//time單位為ms
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	if(htim->Instance == TIM2){
 		delay_count++;
-        Motor_updown.update_speed(1);  // 定期更新encoder計數
+	}
+	if(htim->Instance == TIM6){
+		Motor_updown.PI_run();
+		Motor_updown.update_speed(1);
+		Motor_updown.setspeed(speeds);
+		ms++;
 	}
 }
 
@@ -84,20 +97,15 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 		case GPIO_PIN_13:
 			if (HAL_GPIO_ReadPin(GPIOC, GPIO_Pin) == GPIO_PIN_RESET){
 				speeds = 0;
-				gripperHighest = 1;
-				gripperLowest = 0;
-				high = 100;
+				wait(5000, &htim2);
 			}
 			//Motor_updown.setspeed(speeds);
 			break;
 		case GPIO_PIN_12:
 			if (HAL_GPIO_ReadPin(GPIOC, GPIO_Pin) == GPIO_PIN_RESET){
 				initialized = false;  // 重置初始化狀態
-				speeds = -1;
-				gripperHighest = 0;
-				gripperLowest = 1;
-				high = 0;
-				total_steps = 0;
+				speeds = 0;
+				wait(5000, &htim2);
 				//HAL_Delay(1000);
 			}
 

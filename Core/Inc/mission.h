@@ -36,5 +36,7 @@ void mission_2();
 void mission_3();
 void mission_4();
 
+void gripperControl(bool);
+
 
 #endif /* INC_MISSION_H_ */

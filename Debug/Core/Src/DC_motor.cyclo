@@ -1,8 +1,5 @@
-../Core/Src/DC_motor.cpp:16:6:void DC_motor::PI_run()	11
-../Core/Src/DC_motor.cpp:56:6:void DC_motor::setspeed(float)	1
-../Core/Src/DC_motor.cpp:61:6:void DC_motor::update_speed(int)	1
-../Core/Src/DC_motor.cpp:68:6:void DC_motor::setup()	1
-../Core/Src/DC_motor.cpp:75:6:void DC_motor::calibrate_height(float, int32_t)	1
-../Core/Src/DC_motor.cpp:80:7:float DC_motor::get_current_height() const	1
-../Core/Src/DC_motor.cpp:85:6:void DC_motor::mark_start_position()	1
-../Core/Src/DC_motor.cpp:90:9:int32_t DC_motor::get_steps_from_start() const	1
+../Core/Src/DC_motor.cpp:16:6:void DC_motor::PI_run()	16
+../Core/Src/DC_motor.cpp:53:6:void DC_motor::setspeed(float)	1
+../Core/Src/DC_motor.cpp:56:6:void DC_motor::update_speed(int)	1
+../Core/Src/DC_motor.cpp:62:6:void DC_motor::setup()	1
+../Core/Src/DC_motor.cpp:67:6:void DC_motor::set_motor_parameter(float, int)	1

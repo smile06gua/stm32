@@ -12,6 +12,9 @@
 #include "std_msgs/Int32.h"
 #include "std_msgs/Bool.h"
 
+extern bool gripperIsGet;
+extern bool _gripperFinish;
+
 namespace ROS1 {
 	void init(void);
 	void spinCycle(void);
