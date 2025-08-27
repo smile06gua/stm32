@@ -1,9 +1,10 @@
-../Core/Inc/servo.h:25:3:Servo::Servo(TIM_HandleTypeDef*, uint32_t, int, int, int)	1
+../Core/Inc/servo.h:47:15:static Info Servo::getServoInfo(type)	5
+../Core/Inc/servo.h:74:3:Servo::Servo(TIM_HandleTypeDef*, uint32_t, type)	1
 ../Core/Inc/DC_motor.h:28:2:DC_motor::DC_motor(TIM_HandleTypeDef*, GPIO_TypeDef*, uint16_t, TIM_HandleTypeDef*, uint32_t, bool, float, float)	1
-../Core/Src/mainpp.cpp:44:6:void setup_all()	1
-../Core/Src/mainpp.cpp:54:6:void main_function()	1
-../Core/Src/mainpp.cpp:67:6:void wait(int, TIM_HandleTypeDef*)	2
-../Core/Src/mainpp.cpp:78:6:void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef*)	3
-../Core/Src/mainpp.cpp:90:6:void HAL_GPIO_EXTI_Callback(uint16_t)	5
-../Core/Src/mainpp.cpp:111:1:void __static_initialization_and_destruction_0(int, int)	3
-../Core/Src/mainpp.cpp:111:1:cpp)	1
+../Core/Src/mainpp.cpp:51:6:void setup_all()	1
+../Core/Src/mainpp.cpp:61:6:void main_function()	1
+../Core/Src/mainpp.cpp:74:6:void wait(int, TIM_HandleTypeDef*)	2
+../Core/Src/mainpp.cpp:85:6:void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef*)	3
+../Core/Src/mainpp.cpp:98:6:void HAL_GPIO_EXTI_Callback(uint16_t)	5
+../Core/Src/mainpp.cpp:119:1:void __static_initialization_and_destruction_0(int, int)	3
+../Core/Src/mainpp.cpp:119:1:cpp)	1

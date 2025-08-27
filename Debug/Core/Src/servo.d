@@ -30,7 +30,8 @@ Core/Src/servo.o: ../Core/Src/servo.cpp \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim_ex.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart_ex.h \
- ../Core/Inc/servo.h ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32G4xx_hal.h
+ ../Core/Inc/servo.h ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32G4xx_hal.h \
+ ../Core/Inc/mainpp.h
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h:
 ../Core/Inc/stm32g4xx_hal_conf.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_rcc.h:
@@ -64,3 +65,4 @@ Core/Src/servo.o: ../Core/Src/servo.cpp \
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart_ex.h:
 ../Core/Inc/servo.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32G4xx_hal.h:
+../Core/Inc/mainpp.h:

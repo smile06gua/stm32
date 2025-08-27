@@ -18,15 +18,15 @@ ros::NodeHandle nh;
 
 std_msgs::Bool gripperFinish;
 ros::Publisher pub_gripper("/gripper", &gripperFinish);
-std_msgs::Bool basketOpen;
-ros::Publisher pub_basketFinish("/basket", &basketFinish);
+std_msgs::Bool basketFinish;
+ros::Publisher pub_basket("/basket", &basketFinish);
 std_msgs::Int32 elevator;
 ros::Publisher pub_elevator("/gripper", &elevator);
 
 /** STM Subscribers **/
 //ros::Subscriber<geometry_msgs::Twist> sub_chassis("/cmd_vel", ROS1::callback_Chassis);
 ros::Subscriber<std_msgs::Bool> sub_gripper("/cmd_gripperOpen", ROS1::callback_gripper);
-ros::Subscriber<std_msgs::Int32> sub_elevator("/cmd_elevator", ROS1::callback_Elevator);
+ros::Subscriber<std_msgs::Int32> sub_elevatorHigh("/cmd_elevator", ROS1::callback_Elevator);
 ros::Subscriber<std_msgs::Bool> sub_basketDoor("/cmd_basketDoor", ROS1::callback_BasketDoor);
 
 
@@ -43,7 +43,7 @@ namespace ROS1 {
     nh.advertise(pub_elevator);
 
     nh.subscribe(sub_gripper);
-    nh.subscribe(sub_elevator);
+    nh.subscribe(sub_elevatorHigh);
     nh.subscribe(sub_basketDoor);
 
     return;
@@ -60,9 +60,17 @@ namespace ROS1 {
   }
 
 
-  void pub_gripperOpen(void){
-    gripperFinish.date = _gripperFinish;
+  void _pub_gripper(void){
+    gripperFinish.data = _gripperFinish;
+    gripperIsGet = 0;
     pub_gripper.publish(&gripperFinish);
+    return;
+  }
+
+  void _pub_basket(void){
+    basketFinish.data = _basketFinish;
+    basketIsGet = 0;
+    pub_basket.publish(&basketFinish);
     return;
   }
 
@@ -71,11 +79,18 @@ namespace ROS1 {
    * @param std_msgs::Bool
    */
   void callback_gripper(const std_msgs::Bool &msg){
-	 gripperIsGet = 1;
-     gripperControl(msg.data);
-    // else runIntake = false;
-    return;
+	//gripperIsGet = 1;
+	gripperControl(msg.data);
+	// else runIntake = false;
+	return;
   }
+
+  void callback_basketDoor(const std_msgs::Bool &msg){
+	//basketIsGet = 1;
+	gripperControl(msg.data);
+	// else runIntake = false;
+	return;
+   }
 
 
 

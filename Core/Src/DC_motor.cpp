@@ -57,6 +57,7 @@ void DC_motor::update_speed(int sign){
     int16_t enc ;
 	enc = __HAL_TIM_GetCounter(enc_htim);
 	speed = sign*(float)enc /(4*resolution*span*reduction_ratio);
+	turn += speed*span;
     __HAL_TIM_SetCounter(enc_htim,0);
 }
 void DC_motor::setup(){
@@ -67,4 +68,28 @@ void DC_motor::setup(){
 void DC_motor::set_motor_parameter(float reduction_ratio,int resolution) {
     this->reduction_ratio = reduction_ratio;
     this->resolution = resolution;
+}
+
+// 控cascade lift
+
+void DC_motor::heightTo(int high){
+	update_speed(1);
+	float height = turn * cm_per_turn;
+	float target_turns = 0.0f;
+	if(high >= height){
+		target_turns = turn + ( high / cm_per_turn );
+	}
+	else{
+		target_turns = turn - ( high / cm_per_turn );
+	}
+	
+	while(turn < target_turns){
+		if(target_turns - turn < 10) break;
+		setspeed(2);
+	}
+	while(turn > target_turns){
+		if(target_turns - turn > -10) break;
+		setspeed(-2);
+	}
+	setspeed(0);
 }

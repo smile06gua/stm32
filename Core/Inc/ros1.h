@@ -13,13 +13,17 @@
 #include "std_msgs/Bool.h"
 
 extern bool gripperIsGet;
+extern bool basketIsGet;
 extern bool _gripperFinish;
+extern bool _basketFinish;
+extern bool _Finish;
 
 namespace ROS1 {
 	void init(void);
 	void spinCycle(void);
 
-	void pub_chassis_speed(void);
+	void pub_gripperFinish(void);
+	void pub_basketFinish(void);
 
 	void callback_Chassis(const geometry_msgs::Twist &msg);
 	void callback_gripper(const std_msgs::Bool &msg);

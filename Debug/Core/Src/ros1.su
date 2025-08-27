@@ -21,6 +21,7 @@
 ../Core/Inc/rosserial_msgs/RequestParam.h:200:18:virtual const char* rosserial_msgs::RequestParamResponse::getType()	16	static
 ../Core/Inc/rosserial_msgs/RequestParam.h:201:18:virtual const char* rosserial_msgs::RequestParamResponse::getMD5()	16	static
 ../Core/Inc/ros/publisher.h:48:3:ros::Publisher::Publisher(const char*, ros::Msg*, int)	24	static
+../Core/Inc/ros/publisher.h:53:7:int ros::Publisher::publish(const ros::Msg*)	16	static
 ../Core/Inc/ros/publisher.h:57:7:int ros::Publisher::getEndpointType()	16	static
 ../Core/Inc/STM32Hardware.h:61:21:uint32_t STM32Hardware::getRdmaInd()	16	static
 ../Core/Inc/STM32Hardware.h:68:5:STM32Hardware::STM32Hardware()	16	static
@@ -42,9 +43,12 @@
 ../Core/Inc/std_msgs/Bool.h:51:18:virtual const char* std_msgs::Bool::getMD5()	16	static
 ../Core/Src/ros1.cpp:38:8:void ROS1::init()	8	static
 ../Core/Src/ros1.cpp:57:8:void ROS1::spinCycle()	8	static
-../Core/Src/ros1.cpp:67:8:void ROS1::callback_gripper(const std_msgs::Bool&)	16	static
-../Core/Src/ros1.cpp:79:8:void ROS1::callback_Elevator(const std_msgs::Int32&)	16	static
-../Core/Src/ros1.cpp:89:8:void ROS1::callback_BasketDoor(const std_msgs::Bool&)	16	static
+../Core/Src/ros1.cpp:63:8:void ROS1::_pub_gripper()	8	static
+../Core/Src/ros1.cpp:70:8:void ROS1::_pub_basket()	8	static
+../Core/Src/ros1.cpp:81:8:void ROS1::callback_gripper(const std_msgs::Bool&)	16	static
+../Core/Src/ros1.cpp:88:8:void ROS1::callback_basketDoor(const std_msgs::Bool&)	16	static
+../Core/Src/ros1.cpp:101:8:void ROS1::callback_Elevator(const std_msgs::Int32&)	16	static
+../Core/Src/ros1.cpp:111:8:void ROS1::callback_BasketDoor(const std_msgs::Bool&)	16	static
 ../Core/Inc/ros/msg.h:129:15:static void ros::Msg::varToArr(A, V) [with A = unsigned char*; V = long unsigned int]	24	static
 ../Core/Inc/ros/msg.h:137:15:static void ros::Msg::arrToVar(V&, A) [with V = long unsigned int; A = unsigned char*]	24	static
 ../Core/Inc/ros/node_handle.h:50:7:constexpr ros::NodeHandleBase_::NodeHandleBase_()	16	static
@@ -64,7 +68,7 @@
 ../Core/Inc/ros/node_handle.h:402:8:void ros::NodeHandle_<Hardware, MAX_SUBSCRIBERS, MAX_PUBLISHERS, INPUT_SIZE, OUTPUT_SIZE>::setNow(ros::Time&) [with Hardware = STM32Hardware; int MAX_SUBSCRIBERS = 25; int MAX_PUBLISHERS = 25; int INPUT_SIZE = 512; int OUTPUT_SIZE = 512]	24	static
 ../Core/Inc/ros/node_handle.h:573:8:void ros::NodeHandle_<Hardware, MAX_SUBSCRIBERS, MAX_PUBLISHERS, INPUT_SIZE, OUTPUT_SIZE>::logerror(const char*) [with Hardware = STM32Hardware; int MAX_SUBSCRIBERS = 25; int MAX_PUBLISHERS = 25; int INPUT_SIZE = 512; int OUTPUT_SIZE = 512]	16	static
 ../Core/Inc/ros/node_handle.h:552:8:void ros::NodeHandle_<Hardware, MAX_SUBSCRIBERS, MAX_PUBLISHERS, INPUT_SIZE, OUTPUT_SIZE>::log(char, const char*) [with Hardware = STM32Hardware; int MAX_SUBSCRIBERS = 25; int MAX_PUBLISHERS = 25; int INPUT_SIZE = 512; int OUTPUT_SIZE = 512]	40	static
-../Core/Src/ros1.cpp:94:1:void __static_initialization_and_destruction_0(int, int)	16	static
+../Core/Src/ros1.cpp:116:1:void __static_initialization_and_destruction_0(int, int)	16	static
 ../Core/Inc/ros/subscriber.h:114:16:void ros::Subscriber<MsgT, void>::callback(unsigned char*) [with MsgT = std_msgs::Int32]	16	static
 ../Core/Inc/ros/subscriber.h:128:15:int ros::Subscriber<MsgT, void>::getEndpointType() [with MsgT = std_msgs::Int32]	16	static
 ../Core/Inc/ros/subscriber.h:120:24:const char* ros::Subscriber<MsgT, void>::getMsgType() [with MsgT = std_msgs::Int32]	16	static
@@ -74,4 +78,4 @@
 ../Core/Inc/ros/subscriber.h:120:24:const char* ros::Subscriber<MsgT, void>::getMsgType() [with MsgT = std_msgs::Bool]	16	static
 ../Core/Inc/ros/subscriber.h:124:24:const char* ros::Subscriber<MsgT, void>::getMsgMD5() [with MsgT = std_msgs::Bool]	16	static
 ../Core/Inc/ros/node_handle.h:363:16:bool ros::NodeHandle_<Hardware, MAX_SUBSCRIBERS, MAX_PUBLISHERS, INPUT_SIZE, OUTPUT_SIZE>::connected() [with Hardware = STM32Hardware; int MAX_SUBSCRIBERS = 25; int MAX_PUBLISHERS = 25; int INPUT_SIZE = 512; int OUTPUT_SIZE = 512]	16	static
-../Core/Src/ros1.cpp:94:1:cpp)	8	static
+../Core/Src/ros1.cpp:116:1:cpp)	8	static

@@ -15,6 +15,7 @@
 // 宣告外部變數，這些是在mainpp.cpp中定義的實例
 extern bool initialized;
 extern float speeds;
+extern float turns;
 extern float range;
 extern float add;
 extern float angle;
