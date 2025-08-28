@@ -41,8 +41,10 @@ Core/Src/ros1.o: ../Core/Src/ros1.cpp ../Core/Inc/ros.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32G4xx_hal_uart.h \
  ../Core/Inc/ros1.h ../Core/Inc/geometry_msgs/Twist.h \
  ../Core/Inc/geometry_msgs/Vector3.h ../Core/Inc/std_msgs/Int32.h \
- ../Core/Inc/std_msgs/Bool.h ../Core/Inc/mission.h ../Core/Inc/DC_motor.h \
- ../Core/Inc/servo.h
+ ../Core/Inc/std_msgs/Bool.h ../Core/Inc/std_msgs/Float64.h \
+ ../Core/Inc/mission.h ../Core/Inc/DC_motor.h ../Core/Inc/servo.h \
+ ../Core/Inc/DC_motor.h ../Core/Inc/std_msgs/Bool.h \
+ ../Core/Inc/std_msgs/Float64.h
 ../Core/Inc/ros.h:
 ../Core/Inc/ros/node_handle.h:
 ../Core/Inc/std_msgs/Time.h:
@@ -96,6 +98,10 @@ Core/Src/ros1.o: ../Core/Src/ros1.cpp ../Core/Inc/ros.h \
 ../Core/Inc/geometry_msgs/Vector3.h:
 ../Core/Inc/std_msgs/Int32.h:
 ../Core/Inc/std_msgs/Bool.h:
+../Core/Inc/std_msgs/Float64.h:
 ../Core/Inc/mission.h:
 ../Core/Inc/DC_motor.h:
 ../Core/Inc/servo.h:
+../Core/Inc/DC_motor.h:
+../Core/Inc/std_msgs/Bool.h:
+../Core/Inc/std_msgs/Float64.h:

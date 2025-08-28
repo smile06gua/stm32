@@ -11,6 +11,7 @@
 #include "geometry_msgs/Twist.h"
 #include "std_msgs/Int32.h"
 #include "std_msgs/Bool.h"
+#include "std_msgs/Float64.h"
 
 extern bool gripperIsGet;
 extern bool basketIsGet;
@@ -22,13 +23,13 @@ namespace ROS1 {
 	void init(void);
 	void spinCycle(void);
 
-	void pub_gripperFinish(void);
+	void _pub_gripper(void);
 	void pub_basketFinish(void);
+	void pub_elevatorHeight(void);
 
-	void callback_Chassis(const geometry_msgs::Twist &msg);
+
 	void callback_gripper(const std_msgs::Bool &msg);
-	void callback_Elevator(const std_msgs::Int32 &msg);
-	void callback_ElevatorDoor(const std_msgs::Bool &msg);
+	void callback_Elevator(const std_msgs::Float64 &msg);
 	void callback_BasketDoor(const std_msgs::Bool &msg);
 }
 

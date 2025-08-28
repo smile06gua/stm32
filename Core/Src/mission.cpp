@@ -20,9 +20,9 @@ void mission_1(){
 
 void mission_2(){
 	//前後
-    servo_forward.turnTo(90); //算座標
+    servo_forward.turnTo(angle); //算座標
 	wait(2000, &htim2);
-	servo_forward.turnTo(950); //算座標
+	servo_forward.turnTo(angle_2); //算座標
 	wait(2000, &htim2);
 
 	// 夾咖啡杯
@@ -38,9 +38,10 @@ void mission_3(){
 
 	//竹簍
 	//servo_right.update_pos(angle_2, 5);
-	servo_right.turnTo(angle);  // 0~55
-	servo_left.turnTo(angle_2);
-
+	//servo_right.turnTo(angle);  // 0~55
+	//servo_left.turnTo(angle_2);
+	servo_gripper.turnTo(angle);
+	Motor_updown.heightTo(high1);
 	//wait(1000, &htim2);
 	//servo_right.update_pos(angle, 5);
 	//servo_right.turnTo(angle);
@@ -92,6 +93,9 @@ void forwardControl(bool done){
 	}
 }
 
+void elevatorControl(float high){
+	Motor_updown.heightTo(high);
+}
 
 
 

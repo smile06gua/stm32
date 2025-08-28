@@ -9,7 +9,9 @@
 #include <ros1.h>
 //#include <chassis.h>
 #include "mission.h"
-
+#include "DC_motor.h"
+#include <std_msgs/Bool.h>
+#include <std_msgs/Float64.h>
 ros::NodeHandle nh;
 
 /** STM Publishers **/
@@ -20,13 +22,13 @@ std_msgs::Bool gripperFinish;
 ros::Publisher pub_gripper("/gripper", &gripperFinish);
 std_msgs::Bool basketFinish;
 ros::Publisher pub_basket("/basket", &basketFinish);
-std_msgs::Int32 elevator;
-ros::Publisher pub_elevator("/gripper", &elevator);
+std_msgs::Float64 elevatorHeight;
+ros::Publisher pub_elevator("/elevator", &elevatorHeight);
 
 /** STM Subscribers **/
 //ros::Subscriber<geometry_msgs::Twist> sub_chassis("/cmd_vel", ROS1::callback_Chassis);
 ros::Subscriber<std_msgs::Bool> sub_gripper("/cmd_gripperOpen", ROS1::callback_gripper);
-ros::Subscriber<std_msgs::Int32> sub_elevatorHigh("/cmd_elevator", ROS1::callback_Elevator);
+ros::Subscriber<std_msgs::Float64> sub_elevatorHeight("/cmd_elevator", ROS1::callback_Elevator);
 ros::Subscriber<std_msgs::Bool> sub_basketDoor("/cmd_basketDoor", ROS1::callback_BasketDoor);
 
 
@@ -43,7 +45,7 @@ namespace ROS1 {
     nh.advertise(pub_elevator);
 
     nh.subscribe(sub_gripper);
-    nh.subscribe(sub_elevatorHigh);
+    nh.subscribe(sub_elevatorHeight);
     nh.subscribe(sub_basketDoor);
 
     return;
@@ -62,7 +64,7 @@ namespace ROS1 {
 
   void _pub_gripper(void){
     gripperFinish.data = _gripperFinish;
-    gripperIsGet = 0;
+    //	gripperIsGet = 0;
     pub_gripper.publish(&gripperFinish);
     return;
   }
@@ -70,6 +72,12 @@ namespace ROS1 {
   void _pub_basket(void){
     basketFinish.data = _basketFinish;
     basketIsGet = 0;
+    pub_basket.publish(&basketFinish);
+    return;
+  }
+  void _pub_elevator(void){
+    elevatorHeight.data = high;
+
     pub_basket.publish(&basketFinish);
     return;
   }
@@ -98,7 +106,8 @@ namespace ROS1 {
    * @brief Elevator 回調函數。
    * @param std_msgs::Int32
    */
-  void callback_Elevator(const std_msgs::Int32 &msg){
+  void callback_Elevator(const std_msgs::Float64 &msg){
+	elevatorControl(msg.data);
     // runElevator = msg.data;
     return;
   }

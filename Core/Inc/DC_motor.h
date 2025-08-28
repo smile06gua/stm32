@@ -11,10 +11,13 @@
 
 #include "stm32g4xx_hal.h"
 
-extern int32_t total_turns;
+extern float total_turns;
 extern float cm_per_turn;
 extern float total_high;
-
+extern float turn;
+extern float high1;
+extern float height;
+extern float target_turns;
 
 class DC_motor{
 public:
@@ -24,11 +27,9 @@ public:
 	float get_speed() const { return speed; }
 	void setspeed(float target_speed);
 	void stepTo(int32_t steps);
-	void heightTo(int high);
+	void heightTo(float high);
 	void set_motor_parameter(float reduction_ratio,int resolution) ;
 	void set_PID_parameter(float _kp,float _ki);
-	void DC_motor::StepTo(int32_t steps);
-
 
 	DC_motor(TIM_HandleTypeDef *_enc_htim, GPIO_TypeDef *_dirPort, uint16_t _dirPin, TIM_HandleTypeDef *_PWM_htim,
 			uint32_t _PWM_TIM_CHANNEL,bool _dirpin,float _kp,float _ki) {
@@ -49,7 +50,7 @@ private:
 	//sp of velocity
 	float speed = 0.f;
 	float sp = 0.f;
-	float turn = 0.f;
+	//float turn = 0.f;
 	//motor and encoder information
 	float span = 0.001;
 	int resolution = 100;
@@ -58,6 +59,7 @@ private:
 	int arr = 999;
 	bool dir_pin = 0;
 	int pulse = 0;
+	
 	float u = 0.f;
 	TIM_HandleTypeDef *enc_htim;
 	//motor driver

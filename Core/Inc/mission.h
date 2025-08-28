@@ -38,6 +38,6 @@ void mission_3();
 void mission_4();
 
 void gripperControl(bool);
-
-
+void basketControl(bool);
+void elevatorControl(float);
 #endif /* INC_MISSION_H_ */
