@@ -27,25 +27,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  0000c06c  2**0
                   CONTENTS, READONLY
- 12 .debug_info   00023367  00000000  00000000  0000c09c  2**0
+ 12 .debug_info   000233b3  00000000  00000000  0000c09c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 0000444e  00000000  00000000  0002f403  2**0
+ 13 .debug_abbrev 0000444d  00000000  00000000  0002f44f  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 00001848  00000000  00000000  00033858  2**3
+ 14 .debug_aranges 00001850  00000000  00000000  000338a0  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_rnglists 00001310  00000000  00000000  000350a0  2**0
+ 15 .debug_rnglists 00001317  00000000  00000000  000350f0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  00020e86  00000000  00000000  000363b0  2**0
+ 16 .debug_macro  00020e86  00000000  00000000  00036407  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   0001f2e1  00000000  00000000  00057236  2**0
+ 17 .debug_line   0001f31f  00000000  00000000  0005728d  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    000cfcc9  00000000  00000000  00076517  2**0
+ 18 .debug_str    000cfd13  00000000  00000000  000765ac  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  001461e0  2**0
+ 19 .comment      00000043  00000000  00000000  001462bf  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00006d20  00000000  00000000  00146224  2**2
+ 20 .debug_frame  00006d44  00000000  00000000  00146304  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 0000005f  00000000  00000000  0014cf44  2**0
+ 21 .debug_line_str 0000005f  00000000  00000000  0014d048  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -4086,7 +4086,7 @@ float cm_per_turn = total_high / total_turns; // 每步對應的公分數
  8002212:	bd80      	pop	{r7, pc}
 
 08002214 <_Z9mission_2v>:
-
+int zeroPointAngle = 440;
 void mission_1(){
 
 }
@@ -4095,49 +4095,49 @@ void mission_2(){
  8002214:	b580      	push	{r7, lr}
  8002216:	af00      	add	r7, sp, #0
 	//前後
-    servo_forward.turnTo(angle); //算座標
- 8002218:	4b1b      	ldr	r3, [pc, #108]	@ (8002288 <_Z9mission_2v+0x74>)
- 800221a:	edd3 7a00 	vldr	s15, [r3]
- 800221e:	eefd 7ae7 	vcvt.s32.f32	s15, s15
- 8002222:	2200      	movs	r2, #0
- 8002224:	ee17 1a90 	vmov	r1, s15
- 8002228:	4818      	ldr	r0, [pc, #96]	@ (800228c <_Z9mission_2v+0x78>)
- 800222a:	f002 fa2d 	bl	8004688 <_ZN5Servo6turnToEii>
+    servo_forward.turnTo(30); //算座標
+ 8002218:	2200      	movs	r2, #0
+ 800221a:	211e      	movs	r1, #30
+ 800221c:	481a      	ldr	r0, [pc, #104]	@ (8002288 <_Z9mission_2v+0x74>)
+ 800221e:	f002 fa33 	bl	8004688 <_ZN5Servo6turnToEii>
 	wait(2000, &htim2);
- 800222e:	4918      	ldr	r1, [pc, #96]	@ (8002290 <_Z9mission_2v+0x7c>)
- 8002230:	f44f 60fa 	mov.w	r0, #2000	@ 0x7d0
- 8002234:	f7ff febe 	bl	8001fb4 <_Z4waitiP17TIM_HandleTypeDef>
-	servo_forward.turnTo(angle_2); //算座標
- 8002238:	4b16      	ldr	r3, [pc, #88]	@ (8002294 <_Z9mission_2v+0x80>)
- 800223a:	edd3 7a00 	vldr	s15, [r3]
- 800223e:	eefd 7ae7 	vcvt.s32.f32	s15, s15
- 8002242:	2200      	movs	r2, #0
- 8002244:	ee17 1a90 	vmov	r1, s15
- 8002248:	4810      	ldr	r0, [pc, #64]	@ (800228c <_Z9mission_2v+0x78>)
- 800224a:	f002 fa1d 	bl	8004688 <_ZN5Servo6turnToEii>
+ 8002222:	491a      	ldr	r1, [pc, #104]	@ (800228c <_Z9mission_2v+0x78>)
+ 8002224:	f44f 60fa 	mov.w	r0, #2000	@ 0x7d0
+ 8002228:	f7ff fec4 	bl	8001fb4 <_Z4waitiP17TIM_HandleTypeDef>
+	servo_forward.turnTo(910); //算座標
+ 800222c:	2200      	movs	r2, #0
+ 800222e:	f240 318e 	movw	r1, #910	@ 0x38e
+ 8002232:	4815      	ldr	r0, [pc, #84]	@ (8002288 <_Z9mission_2v+0x74>)
+ 8002234:	f002 fa28 	bl	8004688 <_ZN5Servo6turnToEii>
 	wait(2000, &htim2);
- 800224e:	4910      	ldr	r1, [pc, #64]	@ (8002290 <_Z9mission_2v+0x7c>)
- 8002250:	f44f 60fa 	mov.w	r0, #2000	@ 0x7d0
- 8002254:	f7ff feae 	bl	8001fb4 <_Z4waitiP17TIM_HandleTypeDef>
+ 8002238:	4914      	ldr	r1, [pc, #80]	@ (800228c <_Z9mission_2v+0x78>)
+ 800223a:	f44f 60fa 	mov.w	r0, #2000	@ 0x7d0
+ 800223e:	f7ff feb9 	bl	8001fb4 <_Z4waitiP17TIM_HandleTypeDef>
 
 	// 夾咖啡杯
 	/*servo_gripper*/
-	servo_gripper.turnTo(0);  //off
- 8002258:	2200      	movs	r2, #0
- 800225a:	2100      	movs	r1, #0
- 800225c:	480e      	ldr	r0, [pc, #56]	@ (8002298 <_Z9mission_2v+0x84>)
- 800225e:	f002 fa13 	bl	8004688 <_ZN5Servo6turnToEii>
+	servo_gripper.turnTo(angle);  //off
+ 8002242:	4b13      	ldr	r3, [pc, #76]	@ (8002290 <_Z9mission_2v+0x7c>)
+ 8002244:	edd3 7a00 	vldr	s15, [r3]
+ 8002248:	eefd 7ae7 	vcvt.s32.f32	s15, s15
+ 800224c:	2200      	movs	r2, #0
+ 800224e:	ee17 1a90 	vmov	r1, s15
+ 8002252:	4810      	ldr	r0, [pc, #64]	@ (8002294 <_Z9mission_2v+0x80>)
+ 8002254:	f002 fa18 	bl	8004688 <_ZN5Servo6turnToEii>
 	wait(2000, &htim2);
- 8002262:	490b      	ldr	r1, [pc, #44]	@ (8002290 <_Z9mission_2v+0x7c>)
- 8002264:	f44f 60fa 	mov.w	r0, #2000	@ 0x7d0
- 8002268:	f7ff fea4 	bl	8001fb4 <_Z4waitiP17TIM_HandleTypeDef>
-	servo_gripper.turnTo(300);  //open
+ 8002258:	490c      	ldr	r1, [pc, #48]	@ (800228c <_Z9mission_2v+0x78>)
+ 800225a:	f44f 60fa 	mov.w	r0, #2000	@ 0x7d0
+ 800225e:	f7ff fea9 	bl	8001fb4 <_Z4waitiP17TIM_HandleTypeDef>
+	servo_gripper.turnTo(angle_2);  //open
+ 8002262:	4b0d      	ldr	r3, [pc, #52]	@ (8002298 <_Z9mission_2v+0x84>)
+ 8002264:	edd3 7a00 	vldr	s15, [r3]
+ 8002268:	eefd 7ae7 	vcvt.s32.f32	s15, s15
  800226c:	2200      	movs	r2, #0
- 800226e:	f44f 7196 	mov.w	r1, #300	@ 0x12c
- 8002272:	4809      	ldr	r0, [pc, #36]	@ (8002298 <_Z9mission_2v+0x84>)
+ 800226e:	ee17 1a90 	vmov	r1, s15
+ 8002272:	4808      	ldr	r0, [pc, #32]	@ (8002294 <_Z9mission_2v+0x80>)
  8002274:	f002 fa08 	bl	8004688 <_ZN5Servo6turnToEii>
 	wait(2000, &htim2);
- 8002278:	4905      	ldr	r1, [pc, #20]	@ (8002290 <_Z9mission_2v+0x7c>)
+ 8002278:	4904      	ldr	r1, [pc, #16]	@ (800228c <_Z9mission_2v+0x78>)
  800227a:	f44f 60fa 	mov.w	r0, #2000	@ 0x7d0
  800227e:	f7ff fe99 	bl	8001fb4 <_Z4waitiP17TIM_HandleTypeDef>
 
@@ -4146,11 +4146,11 @@ void mission_2(){
  8002282:	bf00      	nop
  8002284:	bd80      	pop	{r7, pc}
  8002286:	bf00      	nop
- 8002288:	20000544 	.word	0x20000544
- 800228c:	20000520 	.word	0x20000520
- 8002290:	2000012c 	.word	0x2000012c
- 8002294:	20000548 	.word	0x20000548
- 8002298:	200004c0 	.word	0x200004c0
+ 8002288:	20000520 	.word	0x20000520
+ 800228c:	2000012c 	.word	0x2000012c
+ 8002290:	20000544 	.word	0x20000544
+ 8002294:	200004c0 	.word	0x200004c0
+ 8002298:	20000548 	.word	0x20000548
 
 0800229c <_Z14gripperControlb>:
 }

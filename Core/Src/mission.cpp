@@ -13,16 +13,17 @@
 bool _gripperFinish = 0;
 bool _basketFinish = 0;
 bool _forwardFinish = 0;
-
+float angle_per_mm = 880/294.55;
+int zeroPointAngle = 440;
 void mission_1(){
 
 }
 
 void mission_2(){
 	//前後
-    servo_forward.turnTo(angle); //算座標
+    servo_forward.turnTo(30); //算座標
 	wait(2000, &htim2);
-	servo_forward.turnTo(angle_2); //算座標
+	servo_forward.turnTo(910); //算座標
 	wait(2000, &htim2);
 
 	// 夾咖啡杯
@@ -97,5 +98,15 @@ void elevatorControl(float high){
 	Motor_updown.heightTo(high);
 }
 
-
+void forwardToPoint(float forward_cm){
+	if(forward_cm < 0){
+		servo_forward.turnTo(int(zeroPointAngle + forward_cm*angle_per_mm));
+	}
+	else if(forward_cm > 0){
+		servo_forward.turnTo(int(zeroPointAngle + forward_cm*angle_per_mm));
+	}
+	else{
+		servo_forward.turnTo(zeroPointAngle);
+	}
+}
 
