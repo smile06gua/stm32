@@ -48,8 +48,8 @@ int gripperHighest = 0;
 int gripperLowest = 0;
 int ms = 0;
 float total_turns = 2.746;  // 用來記錄總步數
-float total_high = 30.2; // 最大高度差
-float cm_per_turn = total_high / total_turns; // 每步對應的公分數
+float total_high = 302; // 最大高度差
+float mm_per_turn = total_high / total_turns; // 每步對應的公分數
 float turn1, turn2;
 float height = 0.0f;
 float target_turns = 0.0f;

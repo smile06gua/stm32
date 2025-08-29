@@ -73,14 +73,14 @@ void DC_motor::set_motor_parameter(float reduction_ratio,int resolution) {
 // 控cascade lift
 
 void DC_motor::heightTo(float high){
-	height = 7.2 + turn * cm_per_turn;
+	height = 7.2 + turn * mm_per_turn;
 	//target_turns = 0.0f;
 	if(high != 0){
 		if(high >= height){
-			target_turns = turn + ( (high - height )/ cm_per_turn );
+			target_turns = turn + ( (high - height )/ mm_per_turn );
 		}
 		else{
-			target_turns = turn - ( (height - high ) / cm_per_turn );
+			target_turns = turn - ( (height - high ) / mm_per_turn );
 		}
 
 		while(turn < target_turns && high1 != 0){

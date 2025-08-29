@@ -12,7 +12,7 @@
 #include "stm32g4xx_hal.h"
 
 extern float total_turns;
-extern float cm_per_turn;
+extern float mm_per_turn;
 extern float total_high;
 extern float turn;
 extern float high1;
