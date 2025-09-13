@@ -39,6 +39,7 @@ bool initialized = false;
 float speeds = 0;
 float turn = 0;
 float angle = 0; //測試用
+float angle_2 = 0;
 float high1= 0.0f;
 int delay_count = 0;
 int elevator_type = 0;
@@ -76,7 +77,7 @@ void setup_all(){
 
 	wait(5000, &htim2);
 	servo_gripper.setup(0);
-	servo_right.setup(0);
+	servo_right.setup(150);
 	servo_left.setup(0);
 	servo_forward.turnTo(300); //920---40 底
 
@@ -104,6 +105,8 @@ void main_function(){
 		// ROS1::_pub_gripper();
 		//mission_3();
 		//middleTurn(angle);
+		servo_left.turnTo(angle);
+		servo_right.turnTo(angle_2);
 
 
 	}

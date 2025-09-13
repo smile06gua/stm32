@@ -129,11 +129,11 @@ namespace ROS1 {
   }
 
   void callback_basketDoor(const std_msgs::Bool &msg){
-
+	basketControl(msg.data);
 	return;
    }
 
-  void callback_forward(const std_msgs::Int32 &msg){
+  void callback_forward(const std_msgs::Int32 &msg){   //-90~220
 	  forwardToPoint(msg.data);
 	  return;
   }

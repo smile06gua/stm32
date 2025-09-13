@@ -86,13 +86,13 @@ void middleTurn(int angle){
 
 void basketControl(bool open){
 	if(open){
-		servo_left.turnTo(0);
-		servo_right.turnTo(0);
+		servo_left.turnTo(50);
+		servo_right.turnTo(5);
 		_basketFinish = 1;
 	}
 	else{
 		servo_left.turnTo(0);
-		servo_right.turnTo(0);
+		servo_right.turnTo(58);
 		_basketFinish = 0;
 	}
 }
