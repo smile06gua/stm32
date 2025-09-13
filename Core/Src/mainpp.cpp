@@ -101,12 +101,10 @@ void main_function(){
 
 		//servo_turn.setup(aljjojojoj);
 		//ROS1::_pub_gripper();
-		//ROS1::spinCycle();
+		ROS1::spinCycle();
 		// ROS1::_pub_gripper();
 		//mission_3();
 		//middleTurn(angle);
-		servo_left.turnTo(angle);
-		servo_right.turnTo(angle_2);
 
 
 	}
