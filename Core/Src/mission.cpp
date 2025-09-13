@@ -12,9 +12,9 @@
 
 bool _gripperFinish = 0;
 bool _basketFinish = 0;
-bool _forwardFinish = 0;
-float angle_per_mm = 880/294.55;
-int zeroPointAngle = 440;
+bool _forwardFinish = 0; // ???
+
+
 void mission_1(){
 
 }
@@ -41,8 +41,11 @@ void mission_3(){
 	//servo_right.update_pos(angle_2, 5);
 	//servo_right.turnTo(angle);  // 0~55
 	//servo_left.turnTo(angle_2);
-	servo_gripper.turnTo(angle);
-	Motor_updown.heightTo(high1);
+	//servo_gripper.turnTo(angle);
+	if(initialized){
+		Motor_updown.heightTo(high1);
+	}
+
 	//wait(1000, &htim2);
 	//servo_right.update_pos(angle, 5);
 	//servo_right.turnTo(angle);
@@ -60,13 +63,24 @@ void mission_4(){
 }
 
 void gripperControl(bool open){
-	if(open){
-		servo_gripper.turnTo(300);  //open
-		_gripperFinish = 1; //
+	if(open == 0){
+		servo_gripper.turnTo(240);  //close
+		_gripperFinish = 0; //
 	}
 	else{
-		servo_gripper.turnTo(0); //off
-		_gripperFinish = 0;
+		servo_gripper.turnTo(0); //open
+		_gripperFinish = 1;
+	}
+}
+
+void middleTurn(int angle){
+	float degree = angle;
+	_current_theta = angle;
+	if(angle < 0 && angle > -260){
+		servo_turn.turnTo(261.0 + degree, 5000);
+	}
+	if(angle >= 0 && angle < 30){
+		servo_turn.turnTo(261.0 + degree, 5000);
 	}
 }
 
@@ -98,15 +112,24 @@ void elevatorControl(float high){
 	Motor_updown.heightTo(high);
 }
 
-void forwardToPoint(float forward_cm){
-	if(forward_cm < 0){
-		servo_forward.turnTo(int(zeroPointAngle + forward_cm*angle_per_mm));
+void for_last_mission(){
+	servo_turn.turnTo(81);
+	servo_forward.turnTo(30);
+}
+
+void forwardToPoint(float forward_mm){
+	if(forward_mm < 0 && forward_mm > -90){
+		servo_forward.turnTo(int(zeroPointAngle + forward_mm*angle_per_mm));
+		_current_y = forward_mm;
+		
 	}
-	else if(forward_cm > 0){
-		servo_forward.turnTo(int(zeroPointAngle + forward_cm*angle_per_mm));
+	else if(forward_mm > 0 && forward_mm < 220){
+		servo_forward.turnTo(int(zeroPointAngle + forward_mm*angle_per_mm));
+		_current_y = forward_mm;
 	}
-	else{
+	else if(forward_mm == 0){
 		servo_forward.turnTo(zeroPointAngle);
+		_current_y = 0;
 	}
 }
 

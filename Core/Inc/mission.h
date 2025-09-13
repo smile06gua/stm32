@@ -22,15 +22,17 @@ extern float angle;
 extern float angle_2;
 extern float high;
 extern int delay_count;
-extern int gripperHighest;
-extern int gripperLowest;
 extern int32_t total_steps;
 extern DC_motor Motor_updown;
 extern Servo servo_forward;
 extern Servo servo_gripper;
-extern Servo servo_trun;
+extern Servo servo_turn;
 extern Servo servo_left;
 extern Servo servo_right;   
+extern float angle_per_mm;
+extern int zeroPointAngle;
+extern float _current_y;
+extern float _current_theta;
 
 void mission_1();
 void mission_2();
@@ -40,4 +42,7 @@ void mission_4();
 void gripperControl(bool);
 void basketControl(bool);
 void elevatorControl(float);
+void forwardToPoint(float);
+void for_last_mission();
+void middleTurn(int);
 #endif /* INC_MISSION_H_ */
