@@ -151,10 +151,11 @@ namespace ROS1 {
 			speeds = 0.5;
 		}
 		      // runElevator = msg.data;
+		 else{
+			Motor_updown.heightTo((float) msg.data);
+		 }
 	  }
-	  else{
-		  Motor_updown.heightTo(msg.data);
-	  }
+
 
     return;
   }

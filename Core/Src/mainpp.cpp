@@ -60,7 +60,10 @@ int zeroPointAngle = 300;  //32
 float _current_y = 0.0f;
 float _current_theta = 0.0f;
 
+bool initFinish = 1;
+
 void setup_all(){
+	ROS1::init();
 	HAL_TIM_Base_Start_IT(&htim6);
 	HAL_TIM_Base_Start_IT(&htim7);
 	ms++;
@@ -77,12 +80,12 @@ void setup_all(){
 
 	wait(5000, &htim2);
 	servo_gripper.setup(0);
-	servo_right.setup(150);
+	servo_right.setup(58);
 	servo_left.setup(0);
 	servo_forward.turnTo(300); //920---40 底
 
-	ROS1::init();
-	//HAL_TIM_Base_Start_IT(&htim2);
+
+
 
 
 }
@@ -91,6 +94,7 @@ void main_function(){
 
 	//ROS1::init();
 	while(1){
+		ROS1::spinCycle();
 		//
 //		wait(1000, &htim2);
 		//
@@ -101,7 +105,7 @@ void main_function(){
 
 		//servo_turn.setup(aljjojojoj);
 		//ROS1::_pub_gripper();
-		ROS1::spinCycle();
+
 		// ROS1::_pub_gripper();
 		//mission_3();
 		//middleTurn(angle);
@@ -115,6 +119,7 @@ void wait(int time,TIM_HandleTypeDef *htim){//time單位為ms
 
 	HAL_TIM_Base_Start_IT(htim);
 	while(delay_count < time){
+		ROS1::spinCycle();
 	}
 
 	HAL_TIM_Base_Stop_IT(htim);
@@ -127,7 +132,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 		delay_count++;
 	}
 	if(htim->Instance == TIM6){
-		height = 445 + turn * mm_per_turn;
+		if(initialized){
+			height = 445 + turn * mm_per_turn;
+		}
 		Motor_updown.PI_run();
 		Motor_updown.update_speed(-1);
 		Motor_updown.setspeed(speeds);
@@ -136,10 +143,14 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 		//ROS1::_pub_elevator();
 	}
 	if(htim->Instance == TIM7){
+
+
 		ROS1::_pub_gripper();
 		ROS1::_pub_touch();
 		ROS1::_pub_theta();
 		ROS1::_pub_y();
+
+
 		//s++;
 		}
 }
@@ -166,7 +177,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 				elevator_type = 2;
 				tt = 8;
 				//turn2 = turn;
-
+				speeds = 0;
 				//wait(5000, &htim2);
 				//HAL_Delay(1000);
 			}
