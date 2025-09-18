@@ -64,11 +64,11 @@ void mission_4(){
 
 void gripperControl(bool open){
 	if(open == 0){
-		servo_gripper.turnTo(240);  //close
+		servo_gripper.turnTo(900, 1500);  //close
 		_gripperFinish = 0; //
 	}
 	else{
-		servo_gripper.turnTo(0); //open
+		servo_gripper.turnTo(470, 1500); //open
 		_gripperFinish = 1;
 	}
 }

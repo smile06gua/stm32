@@ -24,7 +24,7 @@ extern TIM_HandleTypeDef htim7;
 DC_motor Motor_updown = {&htim4, GPIOA, GPIO_PIN_10, &htim8, TIM_CHANNEL_2,0,4,12};
 
 Servo servo_turn = {&htim3, TIM_CHANNEL_1, Servo::GBD300T};
-Servo servo_gripper = {&htim1, TIM_CHANNEL_2, Servo::GBD300T};
+Servo servo_gripper = {&htim1, TIM_CHANNEL_2, Servo::GBD1800T};
 Servo servo_left = {&htim1, TIM_CHANNEL_4, Servo::GBD300T};
 Servo servo_right = {&htim1, TIM_CHANNEL_3, Servo::GBD300T};
 Servo servo_forward = {&htim1, TIM_CHANNEL_1, Servo::GBD1800T};
@@ -69,17 +69,17 @@ void setup_all(){
 	ms++;
 	servo_forward.setup(920);
 	servo_turn.setup(261);
-	Motor_updown.setup();
-	initialized = true;
-	speeds = -0.5;
-	wait(3000, &htim2);
-	initialized = false;
-	speeds = 0.5;
-	wait(1500, &htim2);
+//	Motor_updown.setup();
+//	initialized = true;
+//	speeds = -0.5;
+//	wait(3000, &htim2);
+//	initialized = false;
+//	speeds = 0.5;
+//	wait(1500, &htim2);
 
 
-	wait(5000, &htim2);
-	servo_gripper.setup(0);
+	//wait(5000, &htim2);
+	servo_gripper.setup(150);
 	servo_right.setup(58);
 	servo_left.setup(0);
 	servo_forward.turnTo(300); //920---40 底
@@ -94,13 +94,13 @@ void main_function(){
 
 	//ROS1::init();
 	while(1){
-		ROS1::spinCycle();
+		//ROS1::spinCycle();
 		//
 //		wait(1000, &htim2);
 		//
 		//forwardToPoint(pp);
 		//servo_forward.turnTo(angle, 3000);
-		//servo_gripper.turnTo(angle);
+		servo_gripper.turnTo(angle);
 //		wait(1000, &htim2);
 
 		//servo_turn.setup(aljjojojoj);

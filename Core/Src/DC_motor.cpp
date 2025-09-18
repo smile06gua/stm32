@@ -84,23 +84,23 @@ void DC_motor::heightTo(float high){
 			target_turns = turn - ( (height - high ) / mm_per_turn );
 		}
 
-		if(turn < target_turns && high1 != 0){
+		if(turn < target_turns){
 			if(fabs(target_turns - turn) < 0.001){
 				//target_turns = 0;
 				high1 = 0;
 				setspeed(0);
-				break;
+
 			}
 			else{
 				setspeed(0.5);
 			}
 		}
-		if(turn > target_turns && high1 != 0){
+		if(turn > target_turns){
 			if(fabs(target_turns - turn) < 0.001){
 				//target_turns = 0;
 				high1 = 0;
 				setspeed(0);
-				break;
+
 			}
 			else{
 				setspeed(-0.5);
